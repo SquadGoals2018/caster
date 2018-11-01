@@ -1,3 +1,3 @@
-# hackplus
+# Caster
 
 An outdoor sports weather application
