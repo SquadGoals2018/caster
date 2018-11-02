@@ -14,25 +14,28 @@ const RenderInput = ({
   autoFocus,
   required,
   disabled,
-  meta: { touched, error },
-}) => (
-  <FormGroup>
-    <Label for={input.name}>
-      {label}
-      {required && ' *'}
-    </Label>
-    <Input
-      autoFocus={autoFocus && autoFocus}
-      type={type}
-      name={input.name}
-      id={input.name}
-      readOnly={readOnly ? true : false}
-      placeholder={placeholder ? placeholder : `Enter ${label}`}
-      error={touched && error ? true : null}
-      disabled={disabled}
-    />
-  </FormGroup>
-);
+  meta,
+}) => {
+  console.log(meta);
+  return (
+    <FormGroup>
+      <Label for={input.name}>
+        {label}
+        {required && ' *'}
+      </Label>
+      <Input
+        autoFocus={autoFocus && autoFocus}
+        type={type}
+        name={input.name}
+        id={input.name}
+        readOnly={readOnly ? true : false}
+        placeholder={placeholder ? placeholder : `Enter ${label}`}
+        invalid={meta.error ? true : null}
+        disabled={disabled}
+      />
+    </FormGroup>
+  );
+};
 
 RenderInput.propTypes = {
   label: PropTypes.string,
@@ -43,8 +46,10 @@ RenderInput.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
-  error: PropTypes.string,
-  touched: PropTypes.bool,
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool,
+  }),
   required: PropTypes.bool,
   width: PropTypes.number,
   options: PropTypes.arrayOf(PropTypes.object),
