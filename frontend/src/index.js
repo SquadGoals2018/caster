@@ -5,9 +5,29 @@ import App from 'components/App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Add this import:
+import { AppContainer } from 'react-hot-loader';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+// Wrap the rendering in a function:
+const render = () => {
+  ReactDOM.render(
+    // Wrap App inside AppContainer
+    <AppContainer>
+      <App />
+    </AppContainer>,
+    document.getElementById('root')
+  );
+};
+
+// Do this once
 serviceWorker.unregister();
+
+// Render once
+render();
+
+// Webpack Hot Module Replacement API
+if (module.hot) {
+  module.hot.accept('components/App', () => {
+    render();
+  });
+}

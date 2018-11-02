@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Form, Field, reduxForm } from 'redux-form';
 
 import Container from 'reactstrap/lib/Container';
-import Form from 'reactstrap/lib/Form';
+// import Form from 'reactstrap/lib/Form';
 
 import RenderInput from 'components/common/forms/input/RenderInput';
 import { required, email } from 'utils/validation';
@@ -11,6 +11,7 @@ import { required, email } from 'utils/validation';
 const form = 'LOGIN';
 
 const validate = values => {
+  console.log('validate');
   const errors = {};
 
   if (!required(values.email)) {
@@ -30,17 +31,26 @@ class Login extends Component {
   render() {
     return (
       <Container fluid>
-        <Form>
-          <Field name="email" type="email" component={RenderInput} />
+        <Form onSubmit={() => console.log('submit!')}>
+          <Field
+            name="email"
+            component={RenderInput}
+            type="text"
+            label="email"
+          />
+          <Field
+            name="password"
+            component={RenderInput}
+            type="text"
+            label="password"
+          />
         </Form>
       </Container>
     );
   }
 }
 
-export default connect()(
-  reduxForm({
-    form,
-    validate,
-  })(Login)
-);
+export default reduxForm({
+  form,
+  validate,
+})(Login);

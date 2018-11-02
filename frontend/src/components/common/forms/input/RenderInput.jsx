@@ -5,18 +5,21 @@ import FormGroup from 'reactstrap/lib/FormGroup';
 import Label from 'reactstrap/lib/Label';
 import Input from 'reactstrap/lib/Input';
 
-const RenderInput = ({
-  input,
-  label,
-  type,
-  readOnly,
-  placeholder,
-  autoFocus,
-  required,
-  disabled,
-  meta,
-}) => {
-  console.log(meta);
+const RenderInput = props => {
+  const {
+    input,
+    label,
+    type,
+    readOnly,
+    placeholder,
+    autoFocus,
+    required,
+    disabled,
+    meta: { touched, error },
+  } = props;
+
+  console.log(touched, error);
+
   return (
     <FormGroup>
       <Label for={input.name}>
@@ -24,13 +27,14 @@ const RenderInput = ({
         {required && ' *'}
       </Label>
       <Input
+        {...input}
         autoFocus={autoFocus && autoFocus}
         type={type}
         name={input.name}
         id={input.name}
         readOnly={readOnly ? true : false}
         placeholder={placeholder ? placeholder : `Enter ${label}`}
-        invalid={meta.error ? true : null}
+        invalid={touched && error ? true : null}
         disabled={disabled}
       />
     </FormGroup>
