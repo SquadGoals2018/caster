@@ -5,7 +5,7 @@ class Events extends Component {
   render() {
     return (
       <div>
-        <Alert color="primary">This is a primary alert — check it out!</Alert>
+        <Alert color="primary">This is a test</Alert>
       </div>
     );
   }
