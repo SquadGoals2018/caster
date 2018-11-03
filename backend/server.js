@@ -11,8 +11,9 @@ import methodOverride from "method-override"; //we use this so that we can call 
 
 //this area is for the configuration of the express app
 import express from "express";
+const expressValidator = require('express-validator');
 const app = express();
-const port = process.env.PORT || 8008;
+const port = process.env.PORT || 8080; //Change this back to 8008 or something
 app.use(express.static(__dirname + "/public"));
 
 //app middlewares setup
@@ -21,6 +22,7 @@ app.use(methodOverride("_method"));
 app.options("*", cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 
 //routes
 import _default from "./routes/default";
