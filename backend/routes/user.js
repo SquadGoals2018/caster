@@ -7,7 +7,7 @@
 import { baseURL } from "../config";
 import cors from "cors";
 import express from "express";
-import { getAll } from "../models/user";
+import { getAll, signUp } from "../models/user";
 
 const router = express.Router();
 
@@ -16,6 +16,12 @@ router.get("/", cors(), async (req, res, next) => {
   //functions to return the data
   const users = await getAll();
   res.json({ status: 200, response: { success: true, users } });
+});
+
+router.post("/signup", cors(), async (req, res, next) => {
+  //functions to return the data
+  const result = await signUp(req);
+  res.json(result);
 });
 
 module.exports = router;
