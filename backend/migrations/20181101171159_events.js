@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("events", t => {
-    t.increments("event_id");
+    t.unique("event_id");
     t.string("event_venue");
     t.string("event_activities"); // activity ids
     t.string("event_venue_name");

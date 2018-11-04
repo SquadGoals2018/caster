@@ -18,4 +18,9 @@ router.get("/", cors(), async (req, res, next) => {
   res.json({ status: 200, response: { success: true, users } });
 });
 
+router.get("/:user_id", cors(), async(req, res, next) => {
+  const user = await getOne(req.params.user_id)
+  res.json({ status: 200, response: { success: true, user } });
+})
+
 module.exports = router;

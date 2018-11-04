@@ -6,8 +6,24 @@
 */
 import knex from './knex'
 
+const table = "user"
+
 const getAll = () => {
-  return knex('user').select()
+  return knex(table).select()
 }
+
+const getOne = (user_id) => {
+  return knex(table).select().where('user_id',user_id)
+}
+
+const getWhere = (conditions) => {
+  return knex(table).select().where(conditions)
+}
+
+const insert = (data) => {
+  return knex(table).insert(data).returning('user_id')
+}
+
+
 
 export { getAll }

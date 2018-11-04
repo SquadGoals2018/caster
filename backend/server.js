@@ -15,6 +15,23 @@ const app = express();
 const port = process.env.PORT || 8008;
 app.use(express.static(__dirname + "/public"));
 
+//session
+import session from "express-session"
+let RedisStore = require('connect-redis')(session);
+
+app.use(session({
+    store: new RedisStore(options),
+    secret: 'secret',
+    resave: false
+}));
+
+app.use(function (req, res, next) {
+  if (!req.session) {
+    return next(new Error('Oops'))
+  }
+  next()
+})
+
 //app middlewares setup
 app.use(logger("dev"));
 app.use(methodOverride("_method"));
