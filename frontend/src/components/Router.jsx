@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import loadable from 'components/common/loadable/loadable';
 
-const LoadableLoginPage = loadable(() => import('components/login/Login'));
+const LoadableLoginPage = loadable(() => import('components/login/LoginPage'));
 const LoadableSignUpPage = loadable(() => import('components/signUp/SignUp'));
 
 const Router = () => (
