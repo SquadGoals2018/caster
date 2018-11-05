@@ -1,8 +1,10 @@
 export const SET_SESSION = 'SET_SESSION';
 
-export const setSession = () => dispatch => {
+export const setSession = token => dispatch => {
   dispatch({
     type: SET_SESSION,
-    payload: 'result_of_simple_action',
+    payload: {
+      token,
+    },
   });
 };
