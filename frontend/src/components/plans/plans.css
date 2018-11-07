@@ -1,0 +1,30 @@
+.container{
+    border: 1px solid gray;
+    padding: 3rem;
+}
+.planDetails{
+    border: 1px solid gray;
+    height: 24rem;
+    width: 40rem;
+    margin-top: 40px;
+}
+.membersCard{
+    border: 1px solid gray;
+    padding: 5%;
+    text-align: center;
+    max-height: 30rem;
+    min-height: 30rem;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.membersCardHeader{
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+.memberAvatar{
+    border-radius: 100%;
+    background-color: gray;
+    margin-bottom: 20px;
+    width: 100%;
+}

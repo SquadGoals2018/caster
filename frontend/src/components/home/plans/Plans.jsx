@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { Alert } from 'reactstrap';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import "./plans.css";
+import { Alert, Container, Col } from 'reactstrap';
 
 class Plans extends Component {
+  renderDetails = () => {
+    return (
+      <Container>
+        PRIVATE: POTATO
+        Details: POTATO POTATO POTATO
+      </Container>
+    );
+  }
+
   render() {
     return (
-      <div>
-        <Alert color="primary">This is a primary alert — check it out!</Alert>
-      </div>
+      <Container>
+        <Col>Plans</Col>
+        <Col>{this.renderDetails}</Col>
+      </Container>
     );
   }
 }
