@@ -14,50 +14,22 @@ class Plans extends Component {
     );
   }
 
-  renderMembersCard = () => {
-    const exampleUsers = [
+  profileCard = () => {
+    const exampleUser =  
         {
             id: 1,
             image: "https://www.usmagazine.com/wp-content/uploads/2018/06/Smoothie-the-Cat-Instagram-zoom.jpg?w=640",
             first_name: "Pato",
             last_name: "Togademan",
-        },
-        {
-            id: 2,
-            image: "https://www.usmagazine.com/wp-content/uploads/2018/06/Smoothie-the-Cat-Instagram-zoom.jpg?w=640",
-            first_name: "Junarman",
-            last_name: "Alinsub",
-        },
-        {
-            id: 3,
-            image: "https://www.usmagazine.com/wp-content/uploads/2018/06/Smoothie-the-Cat-Instagram-zoom.jpg?w=640",
-            first_name: "Naicaman",
-            last_name: "Suplido",
-        },
-        {
-            id: 4,
-            image: "https://www.usmagazine.com/wp-content/uploads/2018/06/Smoothie-the-Cat-Instagram-zoom.jpg?w=640",
-            first_name: "Lineman",
-            last_name: "Aguila",
-        }
-    ];
+        };
     return (
       <div className="membersCard">
-        <h1>Members</h1>
         <Row>
-            {exampleUsers.map(u => {
-                return this.renderMembersImage(u);
-            })}
+            <Col xs="4">
+                <img className="userAvatar" src={exampleUser.image} />
+            </Col>
         </Row>
       </div>
-    );
-  }
-
-  renderMembersImage = (user) => {
-    return (
-      <Col xs="4" key={user.id}>
-        <img className="memberAvatar" src={user.image} />
-      </Col>
     );
   }
 
@@ -71,7 +43,7 @@ class Plans extends Component {
             </Col>
             <Col md="4" xs="12">
               <Row>
-                {this.renderMembersCard()}
+                {this.profileCard()}
               </Row>
             </Col>
         </Row>
